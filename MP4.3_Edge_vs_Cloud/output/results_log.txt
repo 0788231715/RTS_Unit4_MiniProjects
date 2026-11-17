@@ -1,0 +1,18 @@
+Events: 20000   deadline: 100 ms   hard-decision fraction: 30%   baseline cloud congestion: 0.10
+
+architecture              mean     p95     p99    worst  compliance
+Edge only                 35.9    80.6    89.6    108.8      99.95%
+Cloud (cong=0.10)         53.3    96.6   267.0   3041.4      95.28%
+Hybrid (cong=0.10)        38.3    63.2    82.3    107.7      99.97%
+(all latencies in ms)
+
+Compliance (%) versus cloud congestion level
+  cong    cloud   hybrid     edge  cloud p99  cloud worst
+  0.00   100.00   100.00    99.95       54.6         69.3
+  0.05    97.73    99.99    99.95      171.4       3040.0
+  0.10    95.28    99.97    99.95      267.0       3041.4
+  0.20    89.98    99.90    99.95      382.8       3055.1
+  0.30    83.89    99.80    99.95      520.6       3132.4
+  0.40    77.19    99.72    99.95      634.3       3136.1
+  0.50    70.04    99.65    99.95      721.7       3273.6
+  0.60    62.05    99.58    99.95      810.0       3282.4

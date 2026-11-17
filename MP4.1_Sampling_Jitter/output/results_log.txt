@@ -1,0 +1,41 @@
+=== Sanity check: J=0, p=0 must reproduce the ideal baseline ===
+configuration               mean_iv    sd_iv  max_over    %miss   %>1.5T  mean_dly   max_dly     cross    P_rms
+                               (ms)     (ms)      (ms)                        (ms)      (ms) det/ideal         
+J=0, p=0                      50.00     0.00       0.0      0.0      0.0     -0.17      7.27     10/10    0.058
+
+=== Full sweep: 3 jitter bounds x 3 overrun probabilities (seed=1) ===
+configuration               mean_iv    sd_iv  max_over    %miss   %>1.5T  mean_dly   max_dly     cross    P_rms
+                               (ms)     (ms)      (ms)                        (ms)      (ms) det/ideal         
+J=0%T, p=0.00                 50.00     0.00       0.0      0.0      0.0     -0.17      7.27     10/10    0.058
+J=0%T, p=0.05                 50.00    13.60      98.3      7.8      3.5     -3.35      7.27     10/10    0.114
+J=0%T, p=0.20                 50.14    33.21      98.3     43.0     16.8     30.00    120.18     10/10    0.263
+J=10%T, p=0.00                50.01     3.84       0.0      0.0      0.0      0.69     10.93     10/10    0.064
+J=10%T, p=0.05                50.01    14.87      90.8      9.2      4.0     26.20    103.26     10/10    0.123
+J=10%T, p=0.20                50.29    30.31      98.1     37.0     14.0     42.70    145.75     10/10    0.214
+J=30%T, p=0.00                50.04    11.52       0.0      0.0      1.5      3.39     20.39     10/10    0.089
+J=30%T, p=0.05                50.04    18.74      90.8     10.2      6.3     29.98     98.42     10/10    0.141
+J=30%T, p=0.20                50.37    32.44      98.1     39.8     16.3     45.31    155.44     10/10    0.227
+
+=== Lab task 1: jitter-only vs overrun-only (threshold controller delay) ===
+configuration               mean_iv    sd_iv  max_over    %miss   %>1.5T  mean_dly   max_dly     cross    P_rms
+                               (ms)     (ms)      (ms)                        (ms)      (ms) det/ideal         
+jitter only 10%T              50.01     3.84       0.0      0.0      0.0      0.69     10.93     10/10    0.064
+jitter only 30%T              50.04    11.52       0.0      0.0      1.5      3.39     20.39     10/10    0.089
+jitter only 60%T              50.07    22.15       0.0      0.0     15.8     -2.84     34.58     10/10    0.122
+overrun only p=0.05           50.00    13.60      98.3      7.8      3.5     -3.35      7.27     10/10    0.114
+overrun only p=0.10           50.01    19.62      98.3     15.5      6.5     24.96     74.37     10/10    0.150
+overrun only p=0.20           50.14    33.21      98.3     43.0     16.8     30.00    120.18     10/10    0.263
+
+=== Lab task 3: compliance metric (% cycles with interval > 1.5 T) vs sd of interval ===
+J=30%T p=0.00: sd_iv =  11.52 ms | %>1.5T =   1.5% | max_over =    0.0 ms
+J=0%T p=0.10: sd_iv =  19.62 ms | %>1.5T =   6.5% | max_over =   98.3 ms
+J=30%T p=0.10: sd_iv =  25.58 ms | %>1.5T =  10.8% | max_over =   98.1 ms
+
+=== Lab task 4: halve T_nominal, hold absolute jitter = 7.5 ms ===
+T= 50.0 ms: relative jitter =  15.0% of T | sd_iv =  5.76 ms | mean delay =   1.36 ms
+T= 25.0 ms: relative jitter =  30.0% of T | sd_iv =  5.97 ms | mean delay =  -2.22 ms
+
+=== Figures for three configurations ===
+saved fig1_A_mild_jitter.png and fig2_A_mild_jitter.png  (mean delay 0.7 ms)
+saved fig1_B_heavy_jitter.png and fig2_B_heavy_jitter.png  (mean delay 3.4 ms)
+saved fig1_C_jitter_plus_overruns.png and fig2_C_jitter_plus_overruns.png  (mean delay 30.0 ms)
